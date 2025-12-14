@@ -1474,3 +1474,57 @@ bottom: -1133px;;
 
 
 }
+
+/* ===== 모바일 PC 안내 오버레이 ===== */
+.device-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none; /* 기본은 숨김 */
+}
+
+/* 배경 흐림 효과 */
+.device-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* 안내 문구 박스 */
+.device-notice {
+  position: relative;
+  z-index: 1;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 24px;
+
+  color: #111;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.device-notice strong {
+  font-weight: 700;
+}
+
+.device-notice .sub {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ✅ 모바일 / 태블릿에서만 노출 */
+@media screen and (max-width: 1024px) {
+  .device-overlay {
+    display: block;
+  }
+}
